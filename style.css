@@ -1,0 +1,40 @@
+body{
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+.textInput:focus{
+    outline: none;
+    margin: none;
+}
+ul{
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    
+}
+ul li{
+    margin: 0 20%;
+    display: flex;
+    text-align: center;
+}
+.dlt-btn{
+    margin-left: auto;
+}
+/* darktheme */
+.themebtn{
+    display: flex;/*I know flex should be applied to parent - this is just demo*/
+    border: 2px solid black;
+    background-color: rgb(230, 230, 230);
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 4px;
+    font-weight: 600;
+}
+.themebtn:active{
+    background-color: red;
+}
