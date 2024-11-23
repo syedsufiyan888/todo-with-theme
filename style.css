@@ -1,40 +1,117 @@
-body{
-    text-align: center;
-    width: 100vw;
-    height: 100vh;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-.textInput:focus{
+body {
+    text-align: center;
+    margin-top: 3%;
+}
+.textInput {
+    padding: 10px;
+    margin-right: 0;
+    border-radius: 15px;
+    width: 60%;
+}
+h2{
+    font-size: 1.8rem;
+    padding-bottom: 10px;
+}
+.add-btn {
+    margin-left: 0;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: rgb(196, 228, 196);
+    cursor: pointer;
+    width: 35%;
+    height: auto;
+    text-wrap: wrap;
+}
+.add-btn:hover{
+    background-color: rgb(105, 215, 105);
+}
+.textInput:focus {
     outline: none;
     margin: none;
 }
-ul{
+ul {
     list-style: none;
     text-align: left;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-between;
-    
+    margin-left: 0;
+    width: 100%;
 }
-ul li{
-    margin: 0 20%;
+ul li {
     display: flex;
     text-align: center;
+    background-color: #ffffff91;
+    padding: 10px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+    border-radius: 15px;
+    border: 1px solid black;
 }
-.dlt-btn{
+ul li:hover{
+    background-color: rgb(220, 220, 220);
+}
+
+.dlt-btn {
     margin-left: auto;
+    border-radius: 15px;
+    background-color: rgb(252, 203, 203);
+    cursor: pointer;
+    padding: 1px 6px;
+}
+.dlt-btn:hover{
+    background-color: rgb(255, 111, 111);
+}
+.todo-List {
+    margin-top: 10px;
+    padding: 0;
+}
+.app{
+    margin-left: 25%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* li-text-strike */
+.li-text-strike{
+    text-decoration: line-through;
 }
 /* darktheme */
 .themebtn{
-    display: flex;/*I know flex should be applied to parent - this is just demo*/
-    border: 2px solid black;
-    background-color: rgb(230, 230, 230);
-    color: rgb(0, 0, 0);
-    text-transform: uppercase;
-    cursor: pointer;
+    background-color: rgb(217, 217, 217);
+    padding:7px;
     border-radius: 15px;
-    padding: 4px;
-    font-weight: 600;
+    float: right;
+    cursor: pointer;
+    margin-right: 15px;
 }
-.themebtn:active{
-    background-color: red;
+.themebtn:hover{
+    background-color: rgb(192, 192, 192)
+}
+.dark-theme-text{
+    color: white;
+}
+.themechange {
+    background-color: rgba(0, 0, 0, 0.708);
+}
+.litheme{
+    background-color: #ffffff91;
+    color: rgb(0, 0, 0);
+}
+.themeText{
+    
+}
+@media screen and (min-width:800px){
+    .themebtn{
+        display: block;
+        margin-right: 20%;
+        
+    }
 }
