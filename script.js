@@ -1,58 +1,71 @@
-let textInput = document.querySelector(".textInput")
-let addbtn = document.querySelector(".add-btn");
+let textInput = document.querySelector(".textInput");
+let addbtn = document.querySelector(".addBtn");
 let todolist = document.querySelector(".todolist");
-let arTodo = [];
+let arTodo = JSON.parse(localStorage.getItem("items") || "[]");
+
+arTodo.forEach(task => {
+    addToDOM(task);
+});
 
 addbtn.addEventListener("click", updateList);
+
 function updateList() {
-    //not taking any empty spaces as add task
     if (textInput.value.trim() === "") {
-        textInput.value = '';
+        textInput.value = "";
         return;
     }
-    //creating li after removing empty spaces.
+
     let task = textInput.value.trim();
+    arTodo.push(task);
+    addToDOM(task);
+    saveToLocalStorage();
+    textInput.value = ""; // Clear the input field
+}
+
+function addToDOM(task) {
     let listItem = document.createElement("li");
-
-    //storing inputted text in the li
-    listItem.textContent = task;
-    //adding child to the unordered list
-    todolist.appendChild(listItem);
     listItem.innerHTML = `<span>${task}</span><button class="dlt-btn">X</button><br>`;
-    arTodo.push(listItem.textContent);
-    console.log(arTodo);
-
-    // setting the textInput value to none after adding the task
-    textInput.value = '';
+    todolist.appendChild(listItem);
 
     let deletebtn = listItem.querySelector(".dlt-btn");
     deletebtn.addEventListener("click", deletefn);
 }
+
 function deletefn(event) {
     event.stopPropagation();
-    const li = this.parentElement;
+    const li = event.target.parentElement;
+    const task = li.querySelector("span").textContent;
+
     todolist.removeChild(li);
+
+    const index = arTodo.indexOf(task);
+    if (index > -1) {
+        arTodo.splice(index, 1);
+    }
+
+    saveToLocalStorage();
 }
-//task-complete
-todolist.addEventListener("click",function(event){
-    if(event.target.tagName==="LI"){
-        event.target.classList.toggle('li-text-strike')
-    };
-})
-let theme = document.querySelector(".themebtn")
-theme.addEventListener("click", () => {
-    document.body.classList.toggle('themechange');
-    let listItems = document.querySelectorAll("ul li");
-    listItems.forEach(item => {
-        item.classList.toggle('litheme');
-    });
-    let h2 = document.querySelector('h2');
-    h2.classList.toggle('dark-theme-text');
-    if (theme.textContent === "Dark") {
-        theme.textContent = "Light";
-    } else {
-        theme.textContent = "Dark";
+
+function saveToLocalStorage() {
+    localStorage.setItem("items", JSON.stringify(arTodo));
+}
+
+// Task completion (toggle strikethrough)
+todolist.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+        event.target.classList.toggle("li-text-strike");
     }
 });
 
-
+// Theme toggle
+let theme = document.querySelector(".themebtn");
+theme.addEventListener("click", () => {
+    document.body.classList.toggle("themechange");
+    let listItems = document.querySelectorAll("ul li");
+    listItems.forEach(item => {
+        item.classList.toggle("litheme");
+    });
+    let h2 = document.querySelector("h2");
+    h2.classList.toggle("dark-theme-text");
+    theme.textContent = theme.textContent === "Dark" ? "Light" : "Dark";
+});

@@ -12,12 +12,13 @@ body {
     margin-right: 0;
     border-radius: 15px;
     width: 60%;
+    height: auto;
 }
 h2{
     font-size: 1.8rem;
     padding-bottom: 10px;
 }
-.add-btn {
+.addBtn {
     margin-left: 0;
     padding: 10px;
     font-weight: 600;
@@ -28,7 +29,7 @@ h2{
     height: auto;
     text-wrap: wrap;
 }
-.add-btn:hover{
+.addBtn:hover{
     background-color: rgb(105, 215, 105);
 }
 .textInput:focus {
